@@ -25,20 +25,6 @@ Este proyecto es una tienda online simulada de H&M Perú, desarrollada como entr
 - **Vaciar el carrito:**
   El usuario puede vaciar el carrito completamente usando el botón de pago “Pagar” o eliminando productos uno por uno desde la vista del carrito.
 
-## Estructura de Carpetas
-
-├── assets/            
-├── css/
-│   └── styles.css    
-├── js/
-│   ├── main.js
-│   ├── productos.js
-│   ├── carrito.js
-│   └── ui.js
-├── productos.json     
-├── index.html         
-└── README.md
-
 Características
 - Filtros por categoría y búsqueda en tiempo real.
 - Confirmación y vaciado del carrito por cada compra.
