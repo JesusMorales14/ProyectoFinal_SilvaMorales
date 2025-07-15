@@ -1,30 +1,62 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ecommerce H&M</title>
-  <link rel="stylesheet" href="/css/styles.css"/>
+  <title>H&M Perú</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
-  <h1>Empresa H&M</h1>
+  <header class="header">
+    <h1><img src="assets/logis.jpg" alt="Logo" class="hm_logo" style="height: 40px; vertical-align: middle;">
+      Perú</h1>
+    <div class="cart_icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cart_count">0</span>
+    </div>
+  </header>
 
-  <div class="box_descripcion">
-    <p>Bienvenido a nuestra tienda virtual H&M. Explora la colección y disfruta comprando desde casa.</p>
+  <main class="main_container">
+    <section class="filters">
+      <input type="text" id="search" placeholder="Buscar productos..." class="search_input">
+      <select id="category_filter" class="category_select">
+        <option value="">Todas las categorías</option>
+        <option value="Calzado">Calzado</option>
+        <option value="Ropa">Ropa</option>
+        <option value="Pantalones">Pantalones</option>
+        <option value="Accesorios">Accesorios</option>
+      </select>
+      <button id="view_cart" class="btn">Ver Carrito</button>
+    </section>
+
+    <div id="productos" class="productos_container">
+      <!-- Productos -->
+      <div class="loading">Cargando productos...</div>
+    </div>
+  </main>
+
+  <div id="cart_sidebar" class="cart_sidebar">
+    <div class="cart_header">
+      <h2>Tu Carrito</h2>
+      <button id="close_cart" class="close_btn">&times;</button>
+    </div>
+    <div id="cart_items" class="cart_items">
+      <!-- Productos en el carrito -->
+    </div>
+    <div class="cart_footer">
+      <div class="cart_total">
+        <span>Total:</span>
+        <span id="cart_total_amount">S/ 0.00</span>
+      </div>
+      <button id="checkout_btn" class="checkout_btn">Pagar</button>
+    </div>
   </div>
 
-  <div id="productos" class="productos-container"></div>
+  <div id="overlay" class="overlay"></div>
 
-  <div class="acciones">
-    <button id="ver-total">Ver total</button>
-    <button id="confirmar-compra">Confirmar compra</button>
-  </div>
-
-  <div id="carrito-detalle" class="carrito-detalle"></div>
-
-  <div id="mensaje-usuario" class="mensaje"></div>
-
-  <script src="/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
-

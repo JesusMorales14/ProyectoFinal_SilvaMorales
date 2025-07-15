@@ -1,0 +1,66 @@
+[
+  {
+      "id": 1,
+      "nombre": "Zapatillas Deportivas",
+      "descripcion": "Zapatillas cómodas para correr o caminar",
+      "precio": 249.90,
+      "imagen": "assets/zapatillaDepor.jpg",
+      "categoria": "Calzado"
+  },
+  {
+      "id": 2,
+      "nombre": "Camiseta Básica",
+      "descripcion": "Camiseta de algodón 100% para uso diario",
+      "precio": 59.90,
+      "imagen": "assets/camisetaBasic.jpg",
+      "categoria": "Ropa"
+  },
+  {
+      "id": 3,
+      "nombre": "Jeans Slim Fit",
+      "descripcion": "Pantalones de mezclilla ajustados",
+      "precio": 129.90,
+      "imagen": "assets/slimFit.jpg",
+      "categoria": "Pantalones"
+  },
+      {
+      "id": 4,
+      "nombre": "Reloj Deportivo",
+      "descripcion": "Reloj inteligente con monitor de frecuencia cardíaca",
+      "precio": 199.90,
+      "imagen": "assets/relojDepor.jpg",
+      "categoria": "Accesorios"
+  },
+  {
+      "id": 5,
+      "nombre": "Sudadera con Capucha",
+      "descripcion": "Abrigo deportivo con capucha y bolsillo canguro",
+      "precio": 149.90,
+      "imagen": "assets/sudaderaCapucha.jpg",
+      "categoria": "Ropa"
+  },
+  {
+      "id": 6,
+      "nombre": "Zapatillas Urbanas",
+      "descripcion": "Zapatillas estilo urbano para hombre",
+      "precio": 199.90,
+      "imagen": "assets/zapatillaUrbana.jpg",
+      "categoria": "Calzado"
+  },
+  {
+      "id": 7,
+      "nombre": "Chompa de Lana",
+      "descripcion": "Chompa de lana merino para abrigar en invierno",
+      "precio": 179.90,
+      "imagen": "assets/chompaLana.jpg",
+      "categoria": "Ropa"
+  },
+  {
+      "id": 8,
+      "nombre": "Mochila Urbana",
+      "descripcion": "Mochila resistente con múltiples compartimentos",
+      "precio": 159.90,
+      "imagen": "assets/mochilaUrbana.jpg",
+      "categoria": "Accesorios"
+  }
+]
