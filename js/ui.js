@@ -139,29 +139,91 @@ function finalizar_compra() {
     }
 
     Swal.fire({
-        title: '¿Confirmar compra?',
-        text: `Total: S/ ${calcular_total().toFixed(2)}`,
-        icon: 'question',
+        title: 'Datos personales',
+        html:
+            `<input id="swal_nombre" class="swal2-input" placeholder="Nombre">
+             <input id="swal_email" class="swal2-input" placeholder="Email">
+             <input id="swal_direccion" class="swal2-input" placeholder="Dirección">`,
+        focusConfirm: false,
+        preConfirm: () => {
+            return {
+                nombre: document.getElementById('swal_nombre').value,
+                email: document.getElementById('swal_email').value,
+                direccion: document.getElementById('swal_direccion').value
+            };
+        },
         showCancelButton: true,
-        confirmButtonColor: '#f15b6c',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Sí, pagar',
-        cancelButtonText: 'Seguir comprando'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            vaciar_carrito();
-            renderizar_carrito();
-            actualizar_contador_carrito();
-            toggle_carrito();
-
-            Swal.fire(
-                '¡Compra realizada!',
-                'Gracias por tu compra. Te enviaremos un correo con los detalles.',
-                'success'
-            );
+        confirmButtonText: 'Continuar con el pago',
+        cancelButtonText: 'Cancelar'
+    }).then((formResult) => {
+        if (formResult.isConfirmed) {
+            // Modo de pago
+            Swal.fire({
+                title: 'Modo de pago',
+                html:
+                    `<select id="swal_pago" class="swal2-input" style="width:90%;margin-bottom:10px;">
+                        <option value="tarjeta">Tarjeta de crédito</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="efectivo">Efectivo</option>
+                    </select>
+                    <div id="pago_campos"></div>`,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Continuar',
+                cancelButtonText: 'Cancelar',
+                didOpen: () => {
+                    const select = document.getElementById('swal_pago');
+                    const camposDiv = document.getElementById('pago_campos');
+                    function renderCampos() {
+                        if (select.value === 'tarjeta') {
+                            camposDiv.innerHTML = `
+                                <input class='swal2-input' placeholder='Número de tarjeta'>
+                                <input class='swal2-input' placeholder='Fecha de vencimiento'>
+                                <input class='swal2-input' placeholder='CVV'>`;
+                        } else if (select.value === 'paypal') {
+                            camposDiv.innerHTML = `<input class='swal2-input' placeholder='Email de PayPal'>`;
+                        } else {
+                            camposDiv.innerHTML = `<div style='text-align:center;color:#888;'>Pagarás en tienda al recoger tu pedido.</div>`;
+                        }
+                    }
+                    select.addEventListener('change', renderCampos);
+                    renderCampos();
+                },
+                preConfirm: () => {
+                    return {
+                        metodo: document.getElementById('swal_pago').value
+                    };
+                }
+            }).then((pagoResult) => {
+                if (pagoResult.isConfirmed) {
+                    Swal.fire({
+                        title: '¿Confirmar compra?',
+                        text: `Total: S/ ${calcular_total().toFixed(2)}`,
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#f15b6c',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: 'Sí, pagar',
+                        cancelButtonText: 'Seguir comprando'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            vaciar_carrito();
+                            renderizar_carrito();
+                            actualizar_contador_carrito();
+                            toggle_carrito();
+                            Swal.fire(
+                                '¡Compra realizada!',
+                                'Gracias por tu compra. Te enviaremos un correo con los detalles.',
+                                'success'
+                            );
+                        }
+                    });
+                }
+            });
         }
     });
 }
+
 
 function mostrar_notificacion(mensaje, tipo = 'info') {
     const Toast = Swal.mixin({
