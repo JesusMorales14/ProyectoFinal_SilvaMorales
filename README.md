@@ -4,18 +4,18 @@ Este proyecto es una tienda online simulada de H&M Perú, desarrollada como entr
 
 ## Tecnologías y Herramientas Utilizadas
 
-- **HTML5:** Estructura semántica y accesible para toda la web.
-- **CSS3:** Estilos personalizados, variables CSS, diseño responsive, branding H&M (fondo blanco, botones rojos, texto negro).
-- **JavaScript Modular (ES Modules):**
+- **HTML:** Estructura semántica y accesible para toda la web.
+- **CSS:** Estilos personalizados, variables CSS, diseño responsive, branding H&M (fondo blanco, botones rojos, texto negro).
+- **JavaScript:**
   - `main.js`: Punto de entrada, inicializa la app.
   - `productos.js`: Carga y búsqueda de productos desde un archivo JSON local.
   - `carrito.js`: Lógica de carrito (agregar, quitar, actualizar, persistir).
   - `ui.js`: Renderizado dinámico, interacción y eventos de usuario.
 - **localStorage:** Persistencia del carrito de compras entre sesiones.
-- **SweetAlert2:** Notificaciones y diálogos modernos para feedback al usuario.
+- **SweetAlert:** Notificaciones y diálogos modernos para feedback al usuario.
 - **Font Awesome:** Iconos.
 - **Assets locales:** Imágenes generales.
-- **JSON local:** Archivo `productos.json` simula la base de datos de productos.
+- **JSON:** Archivo `productos.json` simula la base de datos de productos.
 
 ## Flujo y funcionalidades
 
