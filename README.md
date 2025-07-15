@@ -1,6 +1,6 @@
 "# H&M Perú - Proyecto Final
 
-Este proyecto es una tienda online simulada para H&M Perú, desarrollada como entrega final.
+Este proyecto es una tienda online simulada de H&M Perú, desarrollada como entrega final.
 
 ## Tecnologías y Herramientas Utilizadas
 
@@ -13,29 +13,32 @@ Este proyecto es una tienda online simulada para H&M Perú, desarrollada como en
   - `ui.js`: Renderizado dinámico, interacción y eventos de usuario.
 - **localStorage:** Persistencia del carrito de compras entre sesiones.
 - **SweetAlert2:** Notificaciones y diálogos modernos para feedback al usuario.
-- **Font Awesome:** Iconos vectoriales (ej: carrito de compras).
-- **Assets locales:** Imágenes de productos y logo de la marca en la carpeta `/assets`.
-- **JSON local:** Archivo `productos.json` simula una base de datos de productos.
+- **Font Awesome:** Iconos.
+- **Assets locales:** Imágenes generales.
+- **JSON local:** Archivo `productos.json` simula la base de datos de productos.
+
+## Flujo y funcionalidades
+
+- **Agregar productos al carrito:**
+  Los usuarios pueden añadir cualquier producto al carrito desde la vista principal.
+
+- **Vaciar el carrito:**
+  El usuario puede vaciar el carrito completamente usando el botón de pago “Pagar” o eliminando productos uno por uno desde la vista del carrito.
 
 ## Estructura de Carpetas
 
-```
-/ (raíz)
-├── assets/            # Imágenes del logo y productos
+├── assets/            
 ├── css/
-│   └── styles.css     # Estilos principales
+│   └── styles.css    
 ├── js/
 │   ├── main.js
 │   ├── productos.js
 │   ├── carrito.js
 │   └── ui.js
-├── productos.json     # Datos de productos
-├── index.html         # Página principal
+├── productos.json     
+├── index.html         
 └── README.md
-```
 
-## Características Principales
+Características
 - Filtros por categoría y búsqueda en tiempo real.
-- Carrito de compras persistente y animado.
-- Confirmación y vaciado del carrito tras la compra.
-- Diseño adaptado a dispositivos móviles.
+- Confirmación y vaciado del carrito por cada compra.
