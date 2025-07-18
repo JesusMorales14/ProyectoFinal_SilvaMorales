@@ -1,8 +1,9 @@
 import { buscar_productos, cargar_productos } from './productos.js';
 import { agregar_al_carrito, obtener_carrito, actualizar_cantidad, eliminar_del_carrito, calcular_total, vaciar_carrito } from './carrito.js';
 
-let productos = [];
+let productos = []; // Lista de productos
 
+// Se inician los eventos
 export function inicializar_ui() {
     cargar_productos().then(prods => {
         productos = prods;
@@ -16,6 +17,7 @@ export function inicializar_ui() {
     document.getElementById('checkout_btn').addEventListener('click', finalizar_compra);
 }
 
+// Se muestran los productos
 function mostrar_productos(productos_mostrar) {
     const contenedor = document.getElementById('productos');
     if (productos_mostrar.length === 0) {
@@ -49,6 +51,7 @@ function mostrar_productos(productos_mostrar) {
     });
 }
 
+// Se filtran los productos según búsqueda y categoría
 function filtrar_productos() {
     const termino = document.getElementById('search').value;
     const categoria = document.getElementById('category_filter').value;
@@ -56,12 +59,14 @@ function filtrar_productos() {
     mostrar_productos(productos_filtrados);
 }
 
+// Se actualiza el contador de productos en el carrito
 function actualizar_contador_carrito() {
     const carrito = obtener_carrito();
     const total_items = carrito.reduce((total, item) => total + item.cantidad, 0);
     document.getElementById('cart_count').textContent = total_items;
 }
 
+// Se abre o cierra el carrito
 function toggle_carrito() {
     const sidebar = document.getElementById('cart_sidebar');
     const overlay = document.getElementById('overlay');
@@ -73,6 +78,7 @@ function toggle_carrito() {
     }
 }
 
+// Se visualizan los productos en el carrito
 function renderizar_carrito() {
     const carrito = obtener_carrito();
     const contenedor = document.getElementById('cart_items');
@@ -131,6 +137,7 @@ function renderizar_carrito() {
     });
 }
 
+// Se finaliza la compra
 function finalizar_compra() {
     const carrito = obtener_carrito();
     if (carrito.length === 0) {
@@ -157,7 +164,7 @@ function finalizar_compra() {
         cancelButtonText: 'Cancelar'
     }).then((formResult) => {
         if (formResult.isConfirmed) {
-            // Modo de pago
+            // Método de pago
             Swal.fire({
                 title: 'Modo de pago',
                 html:
@@ -225,6 +232,7 @@ function finalizar_compra() {
 }
 
 
+// Se usa notificaciones al momento de agregar o eliminar productos del carrito
 function mostrar_notificacion(mensaje, tipo = 'info') {
     const Toast = Swal.mixin({
         toast: true,

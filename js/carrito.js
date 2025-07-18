@@ -1,7 +1,9 @@
 import { obtener_producto_por_id } from './productos.js';
 
+// Datos del carrito
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
+// Se añade producto al carrito
 export function agregar_al_carrito(id_producto) {
     const producto = obtener_producto_por_id(id_producto);
     if (!producto) return false;
@@ -17,6 +19,7 @@ export function agregar_al_carrito(id_producto) {
     return true;
 }
 
+// Se quita el producto seleccionado del carrito
 export function eliminar_del_carrito(id_producto) {
     const index = carrito.findIndex(item => item.id === id_producto);
     if (index !== -1) {
@@ -27,6 +30,7 @@ export function eliminar_del_carrito(id_producto) {
     return false;
 }
 
+// Se cambia la cantidad del producto seleccionado
 export function actualizar_cantidad(id_producto, cambio) {
     const item = carrito.find(item => item.id === id_producto);
     if (!item) return false;
@@ -40,23 +44,28 @@ export function actualizar_cantidad(id_producto, cambio) {
     return true;
 }
 
+// Se obtiene el estado actualizado del carrito
 export function obtener_carrito() {
     return [...carrito];
 }
 
+// Se calcula el total de precio teniendo en cuenta la cantidad de productos.
 export function calcular_total() {
     return carrito.reduce((total, item) => total + (item.precio * item.cantidad), 0);
 }
 
+// Se guardan los productos en el carrito
 function guardar_carrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
+// Se eliminan productos del carrito
 export function vaciar_carrito() {
     carrito.length = 0;
     localStorage.removeItem('carrito');
 }
 
+// Se guardan los productos seleccionados en el carrito al recargar la página
 export function inicializar_carrito() {
     const carrito_guardado = localStorage.getItem('carrito');
     if (carrito_guardado) {

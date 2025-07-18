@@ -1,5 +1,6 @@
-export let productos = [];
+export let productos = []; // Lista de productos
 
+// Se cargan los productos del archivo JSON
 export async function cargar_productos() {
     try {
         const response = await fetch('../productos.json');
@@ -12,6 +13,7 @@ export async function cargar_productos() {
     }
 }
 
+// Se buscan los productos por nombre o categoría del archivo JSON
 export function buscar_productos(termino = '', categoria = '') {
     return productos.filter(producto => {
         const coincide_nombre = producto.nombre.toLowerCase().includes(termino.toLowerCase());
@@ -20,10 +22,12 @@ export function buscar_productos(termino = '', categoria = '') {
     });
 }
 
+// Se selecciona el producto por su ID
 export function obtener_producto_por_id(id) {
     return productos.find(p => p.id === id);
 }
 
+// Lista de productos
 export function inicializar_productos() {
     return cargar_productos();
 }
